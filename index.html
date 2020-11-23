@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <!-- font awesome -->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/277d889efd.js"></script>
-    <title>ToDo List</title>
+    <title>Addressbook</title>
 </head>
 <body>
 <div class="container">
@@ -64,7 +64,7 @@
                         <label for="filter">Find contact</label>
                         <input id="filter" type="text">
                     </div>
-                    <table>
+                    <table >
                         <thead>
                             <tr>
                                 <th>First name</th>
@@ -75,15 +75,8 @@
                                 <th>Phone</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>user</td>
-                                <td>test</td>
-                                <td>Tartu</td>
-                                <td>Kopli</td>
-                                <td>48305</td>
-                                <td>55555555</td>
-                            </tr>
+                        <tbody id="contacts-table">
+
                         </tbody>
                     </table>
                     <a class="btn grey" href="#" id="clear-contacts">Clear contacts</a>
