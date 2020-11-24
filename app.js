@@ -23,18 +23,8 @@ function addContact(e) {
         alert("Add new contact data!")
     } else {
         const person = new Person(firstName.value, lastName.value, city.value, street.value, postcode.value, phone.value);
-        // create tr
-        const tr = document.createElement('tr');
-
-        // create all td with person data
-        tr.innerHTML = `<td>${person.firstName}</td>
-                        <td>${person.lastName}</td>
-                        <td>${person.city}</td>
-                        <td>${person.street}</td>
-                        <td>${person.postcode}</td>
-                        <td>${person.phone}</td>`;
-        // append tr to table
-        contacts.appendChild(tr);
+        const ui = new UI();
+        ui.addPersonToTable(person);
         e.preventDefault();
     }
 }
