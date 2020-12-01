@@ -2,32 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-          name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <!-- Compiled and minified CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-    <!-- font awesome -->
-    <script crossorigin="anonymous" src="https://kit.fontawesome.com/277d889efd.js"></script>
-    <title>Addressbook</title>
-</head>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+              name="viewport">
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
+        <link href="style.css" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+        <!-- font awesome -->
+        <script crossorigin="anonymous" src="https://kit.fontawesome.com/277d889efd.js"></script>
+        <title>AddressBook</title>
+    </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">Addressbook</span>
+                    <span class="card-title">AddressBook App</span>
                     <form id="contact-form">
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="first_name">First name</label>
+                                <label for="first_name">First Name</label>
                                 <input id="first_name" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="last_name">Last name</label>
+                                <label for="last_name">Last Name</label>
                                 <input id="last_name" type="text">
                             </div>
                         </div>
@@ -39,7 +44,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="street">Street name</label>
+                                <label for="street">Street</label>
                                 <input id="street" type="text">
                             </div>
                         </div>
@@ -51,10 +56,11 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="phone">Phone number</label>
+                                <label for="phone">Phone</label>
                                 <input id="phone" type="text">
                             </div>
                         </div>
+
                         <input class="btn" type="submit" value="Add contact">
                     </form>
                 </div>
@@ -64,22 +70,22 @@
                         <label for="filter">Find contact</label>
                         <input id="filter" type="text">
                     </div>
-                    <table >
+                    <table>
                         <thead>
-                            <tr>
-                                <th>First name</th>
-                                <th>Last name</th>
-                                <th>City</th>
-                                <th>Street</th>
-                                <th>Postcode</th>
-                                <th>Phone</th>
-                            </tr>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>City</th>
+                            <th>Street</th>
+                            <th>Postcode</th>
+                            <th>Phone</th>
+                            <th>Delete</th>
+                        </tr>
                         </thead>
                         <tbody id="contacts-table">
-
                         </tbody>
                     </table>
-                    <a class="btn grey" href="#" id="clear-contacts">Clear contacts</a>
+                    <a class="btn grey" href="#" id="clear-tasks">Clear Contacts</a>
                 </div>
             </div>
         </div>
@@ -89,6 +95,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- local js -->
 <script src="Person.js"></script>
+<script src="LS.js"></script>
 <script src="UI.js"></script>
 <script src="app.js"></script>
 </body>
