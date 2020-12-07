@@ -3,16 +3,18 @@
 // app data html elements
 const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
-const clearBtn = document.querySelector('#clear-tasks');
+const clearBtn = document.querySelector('#clear-contacts');
 
 // define event listeners
-//page reload event - get data from local storage
+// page reload event - get data from Local Storage
 document.addEventListener('DOMContentLoaded', getContacts);
 // add contact to table - submit button
 form.addEventListener('submit', addContact);
-//delete contact
+// delete contact from table - link click
 contacts.addEventListener('click', deleteContact);
-clearBtn.addEventListener('click', clearTasks);
+// clear all contacts from table
+clearBtn.addEventListener('click', clearContacts);
+
 
 // project functions
 // addContact
@@ -27,7 +29,8 @@ function addContact(e) {
 
     // create new ui object
     const ui = new UI();
-    //create new ls object
+
+    // create new Local Storage object
     const ls = new LS();
 
     // control form data
@@ -38,41 +41,47 @@ function addContact(e) {
         const person = new Person(firstName, lastName, city, street, postCode, phone);
         // add person object data to html table
         ui.addPersonToTable(person);
-        //save persons data to ls
+        // save person data to Local Storage
         ls.saveContact(person);
-        ui.alertMessage("added contact to address book", "ok");
-        person.firstName.value = '';
-        // clear fomr inputs
+        ui.alertMessage("Added contact to address book!", "ok");
+        // clear form inputs
         ui.clearInputs();
-        e.preventDefault();
-    }
-}
-
-function deleteContact(e) {
-    const ui = new UI();
-    const ls = new LS();
-    const deleteBtn = e.target;
-    const firstname = (deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-        .previousElementSibling.previousElementSibling.textContent);
-    const lastname = (deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-        .previousElementSibling.textContent);
-    console.log(firstname, lastname);
-    ui.deletePersonFromTable(e.target);
-    const isDeleted = ls.deleteContact(firstname, lastname);
-    //set alert
-    if (isDeleted) {
-        ui.alertMessage("Contact was deleted!", "ok");
-    } else {
-        ui.alertMessage("Problem with deleteing data", "problem");
     }
     e.preventDefault();
 }
 
-function getContacts() {
-    const ls = new LS();
+// deleteContact
+function deleteContact(e) {
+    // create new ui object
     const ui = new UI();
+    // create new Local Storage object
+    const ls = new LS();
+    // delete contact
+    const deleteBtn = e.target;
+    const firstname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    const lastname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    // delete from UI
+    ui.deletePersonFromTable(e.target);
+    // delete from LS
+    const isDeleted = ls.deleteContact(firstname, lastname);
+    // set alert
+    if(isDeleted){
+        ui.alertMessage("Person contact is deleted", "ok");
+    } else {
+        ui.alertMessage("Problem with deleting data", "problem");
+    }
+    e.preventDefault();
+}
+
+// getContacts
+function getContacts() {
+    // create new Local Storage object
+    const ls = new LS();
+    // create new ui object
+    const ui = new UI();
+    // get constacts from LS
     const persons = ls.getContacts();
-    //get each contact and transform to Person object
+    // get each contact from LS and transform to Person object
     persons.forEach(function (person) {
         const personData = new Person(
             person['firstName'],
@@ -81,12 +90,26 @@ function getContacts() {
             person['street'],
             person['postcode'],
             person['phone']);
-        //create ui object for html table row
+        // create UI object for html table row
         ui.addPersonToTable(personData);
-    })
+    });
 }
 
-function clearTasks(e) {
-    contacts.innerHTML = '';
-    localStorage.clear();
+// clearContacts
+function clearContacts(e) {
+    // create new ui object
+    const ui = new UI();
+    // clear contacts from UI
+    ui.clearContacts();
+    // create new Local Storage object
+    const ls = new LS();
+    // clear contacts from LS
+    const isCleared = ls.clearContacts();
+    if (isCleared) {
+        // add alert about it
+        ui.alertMessage("Contacts are cleared", "ok");
+    } else {
+        ui.alertMessage("Some problems, sorry", "problem");
+    }
+
 }
