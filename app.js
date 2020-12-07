@@ -42,6 +42,8 @@ function addContact(e) {
         ls.saveContact(person);
         ui.alertMessage("added contact to address book", "ok");
         person.firstName.value = '';
+        // clear fomr inputs
+        ui.clearInputs();
         e.preventDefault();
     }
 }
